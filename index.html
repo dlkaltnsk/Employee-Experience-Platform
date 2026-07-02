@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çalışan Deneyimi Platformu</title>
+    <!-- CSS dosyamızı bu iskelete bağlıyoruz -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ana Konteyner (Kutu) -->
+    <div class="app-container">
+        
+        <!-- Başlık Alanı -->
+        <header class="main-header">
+            <h1>Çalışan Deneyimi Platformu</h1>
+            <p>Sesinizi duyurmak ve iş arkadaşlarınızı takdir etmek için harika bir yer!</p>
+        </header>
+
+        <!-- NABIZ ANKETİ BÖLÜMÜ -->
+        <section class="card pulse-section">
+            <h2>Bugün Nasıl Hissediyorsun?</h2>
+            <p>Haftalık nabız anketi: Modunu seç, şirket kültürünü birlikte şekillendirelim.</p>
+            
+            <div class="emoji-group">
+                <button class="emoji-btn" title="Harika">😊<span>Harika</span></button>
+                <button class="emoji-btn" title="Normal">😐<span>Normal</span></button>
+                <button class="emoji-btn" title="Düşük">😞<span>Düşük</span></button>
+            </div>
+        </section>
+
+        <!-- TAKDİR PROGRAMI BÖLÜMÜ -->
+        <section class="card recognition-section">
+            <h2>Bir İş Arkadaşını Takdir Et</h2>
+            <p>Başarılı bir çalışmayı veya yardımlaşmayı alkışla!</p>
+            
+            <form class="recognition-form">
+                <label for="employee-name">Kimi Takdir Ediyorsun?</label>
+                <input type="text" id="employee-name" placeholder="Arkadaşının adı ve soyadı...">
+
+                <label for="message">Neden Takdir Ediyorsun?</label>
+                <textarea id="message" rows="4" placeholder="Yaptığı harika işi kısaca anlat..."></textarea>
+
+                <button type="button" class="submit-btn">Takdir Gönder ✨</button>
+            </form>
+        </section>
+
+    </div>
+
+</body>
+</html>
