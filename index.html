@@ -1,18 +1,132 @@
+HTML
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Çalışan Deneyimi Platformu</title>
-    <!-- CSS dosyamızı bu iskelete bağlıyoruz -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .app-container {
+            max-width: 600px;
+            width: 100%;
+        }
+        .main-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .main-header h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        .main-header p {
+            color: #7f8c8d;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.4rem;
+        }
+        .card p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        .emoji-group {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+        }
+        .emoji-btn {
+            background: none;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .emoji-btn span {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+        .emoji-btn:hover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+            transform: translateY(-2px);
+        }
+        
+        /* Form Tasarımları */
+        .recognition-form label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+        .recognition-form input, .recognition-form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+        .submit-btn {
+            background-color: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+        .submit-btn:hover {
+            background-color: #059669;
+        }
+        #successMessage {
+            display: none;
+            background-color: #d1fae5;
+            color: #065f46;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Ana Konteyner (Kutu) -->
     <div class="app-container">
         
-        <!-- Başlık Alanı -->
         <header class="main-header">
             <h1>Çalışan Deneyimi Platformu</h1>
             <p>Sesinizi duyurmak ve iş arkadaşlarınızı takdir etmek için harika bir yer!</p>
@@ -30,24 +144,43 @@
             </div>
         </section>
 
-        <!-- TAKDİR PROGRAMI BÖLÜMÜ -->
+        <!-- TAKDİR PROGRAMI BÖLÜMÜ (TAMAMEN SENİN ŞIK TASARIMIN) -->
         <section class="card recognition-section">
             <h2>Bir İş Arkadaşını Takdir Et</h2>
             <p>Başarılı bir çalışmayı veya yardımlaşmayı alkışla!</p>
             
-            <form class="recognition-form" action="https://api.sheetmonkey.io/form/k6N9keqeSz5xUHMK1XPhRe"method="POST">
-               <input type="hidden" name="x-sheet-name" value="Takdirler">
+            <!-- Sayfa yenilenmesin diye hedefi gizli iframe'e yönlendiriyoruz -->
+            <form id="customForm" action="https://docs.google.com/forms/d/1QImWKFNEySK4ZVuTLGsGV8GS1oIafHXDEUgXaaZ3_hM/formResponse" method="POST" target="hidden_iframe" onsubmit="showSuccess()">
+                
                 <label for="employee-name">Kimi Takdir Ediyorsun?</label>
-                <input type="text" id="employee-name" name="Takdir Edilen" placeholder="Arkadaşının adı ve soyadı...">
+                <!-- name="entry.12345" kısmını kendi formundan bulup değiştireceğiz -->
+                <input type="text" id="employee-name" name="entry.1121950418" placeholder="Arkadaşının adı ve soyadı..." required>
 
                 <label for="message">Neden Takdir Ediyorsun?</label>
-                <textarea id="message" name="Takdir Mesaji" rows="4" placeholder="Yaptığı harika işi kısaca anlat..."></textarea>
+                <!-- name="entry.67890" kısmını kendi formundan bulup değiştireceğiz -->
+                <textarea id="message" name="entry.628692328" rows="4" placeholder="Yaptığı harika işi kısaca anlat..." required></textarea>
 
                 <button type="submit" class="submit-btn">Takdir Gönder ✨</button>
             </form>
+
+            <!-- Başarı Mesajı Kutusu -->
+            <div id="successMessage">Takdiriniz başarıyla gönderildi! 🎉</div>
         </section>
 
     </div>
+
+    <!-- Sayfanın Sheet Monkey gibi yerlere gitmesini engelleyen gizli koruyucu -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+
+    <script>
+        function showSuccess() {
+            // Başarı yazısını gösterir ve formu temizler
+            document.getElementById('successMessage').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('customForm').reset();
+            }, 500);
+        }
+    </script>
 
 </body>
 </html>
