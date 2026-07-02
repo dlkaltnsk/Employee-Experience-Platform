@@ -1,0 +1,107 @@
+/* Genel Sayfa Ayarları */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6; /* Açık grimsi modern bir arka plan */
+    color: #333333; /* Koyu gri yazı rengi */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Tüm içeriği ortalayan ana kutu */
+.app-container {
+    max-width: 600px;
+    width: 100%;
+}
+
+/* Başlık Alanı */
+.main-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.main-header h1 {
+    color: #2c3e50; /* Kurumsal lacivert/mavi tonu */
+    margin-bottom: 5px;
+}
+
+/* Ortak Kart Tasarımı (Anket ve Takdir Kutuları) */
+.card {
+    background-color: #ffffff; /* Beyaz kutular */
+    border-radius: 12px; /* Köşeleri yumuşat */
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Hafif modern gölge */
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #34495e;
+}
+
+/* Emoji Butonlarının Yan Yana Düzeni */
+.emoji-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+/* Emoji Butonları Tasarımı */
+.emoji-btn {
+    background: none;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.2s ease; /* Geçiş efekti yumuşak olsun */
+}
+
+/* Fareyle emojinin üzerine gelince ne olacak? */
+.emoji-btn:hover {
+    border-color: #3498db;
+    background-color: #ebf5fb;
+    transform: scale(1.05); /* Hafifçe büyüsün */
+}
+
+.emoji-btn span {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+/* Form Tasarımı */
+.recognition-form {
+    display: flex;
+    flex-direction: column; /* Elemanları alt alta diz */
+}
+
+/* Form İçindeki Yazı Alanları */
+input[type="text"], textarea {
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Gönder Butonu Tasarımı */
+.submit-btn {
+    background-color: #2ecc71; /* Canlı yeşil renk */
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #27ae60; /* Fare gelince biraz daha koyu yeşil */
+}
