@@ -1,38 +1,6 @@
-HTML
 <!DOCTYPE html>
 <html lang="tr">
-<style>
-        /* Kutuları Jilet Gibi Hizalayan Mucize Kod */
-        .recognition-section form, 
-        .recognition-form {
-            display: flex !important;
-            flex-direction: column !important;
-            max-width: 100% !important;
-            text-align: left !important;
-            gap: 15px !important;
-        }
-        .recognition-form label {
-            display: block !important;
-            margin-top: 10px !important;
-            margin-bottom: 5px !important;
-            font-weight: 600 !important;
-            color: #475569 !important;
-        }
-        .recognition-form input, 
-        .recognition-form textarea {
-            width: 100% !important;
-            padding: 10px !important;
-            border: 1px solid #cbd5e1 !important;
-            border-radius: 6px !important;
-            box-sizing: border-box !important;
-            display: block !important;
-        }
-        .recognition-form .submit-btn {
-            width: 100% !important;
-            margin-top: 10px !important;
-        }
-    </style>
-    <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Çalışan Deneyimi Platformu</title>
@@ -79,51 +47,36 @@ HTML
             font-size: 0.95rem;
             margin-bottom: 20px;
         }
-        .emoji-group {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 15px;
-        }
-        .emoji-btn {
-            background: none;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 10px 20px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-        .emoji-btn span {
-            font-size: 0.8rem;
-            color: #64748b;
-        }
-        .emoji-btn:hover {
-            border-color: #3b82f6;
-            background-color: #eff6ff;
-            transform: translateY(-2px);
-        }
         
-        /* Form Tasarımları */
-        .recognition-form label {
-            display: block;
-            margin-top: 15px;
-            margin-bottom: 5px;
-            font-weight: 600;
-            color: #475569;
-            font-size: 0.9rem;
+        /* Form Elemanlarını Hizalayan Temiz CSS */
+        .recognition-form {
+            display: flex !important;
+            flex-direction: column !important;
+            text-align: left !important;
+            gap: 15px !important;
         }
-        .recognition-form input, .recognition-form textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            box-sizing: border-box;
+        .form-group {
+            display: block !important;
+            margin-bottom: 15px;
+        }
+        .recognition-form label {
+            display: block !important;
+            font-weight: 600 !important;
+            margin-bottom: 8px !important;
+            color: #475569 !important;
             font-size: 0.95rem;
-            margin-bottom: 10px;
+        }
+        .recognition-form input, 
+        .recognition-form textarea,
+        .recognition-form select {
+            width: 100% !important;
+            padding: 10px !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 6px !important;
+            box-sizing: border-box !important;
+            display: block !important;
+            font-family: inherit;
+            background-color: #fff;
         }
         .submit-btn {
             background-color: #10b981;
@@ -136,7 +89,7 @@ HTML
             cursor: pointer;
             transition: background-color 0.2s;
             width: 100%;
-            margin-top: 10px;
+            margin-top: 15px;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
         }
         .submit-btn:hover {
@@ -163,54 +116,110 @@ HTML
             <p>Sesinizi duyurmak ve iş arkadaşlarınızı takdir etmek için harika bir yer!</p>
         </header>
 
-        <!-- NABIZ ANKETİ BÖLÜMÜ -->
-        <section class="card pulse-section">
-            <h2>Bugün Nasıl Hissediyorsun?</h2>
-            <p>Haftalık nabız anketi: Modunu seç, şirket kültürünü birlikte şekillendirelim.</p>
-            
-            <div class="emoji-group">
-                <button class="emoji-btn" title="Harika">😊<span>Harika</span></button>
-                <button class="emoji-btn" title="Normal">😐<span>Normal</span></button>
-                <button class="emoji-btn" title="Düşük">😞<span>Düşük</span></button>
-            </div>
-        </section>
-
-        <!-- TAKDİR PROGRAMI BÖLÜMÜ (TAMAMEN SENİN ŞIK TASARIMIN) -->
+        <!-- TAKDİR PROGRAMI BÖLÜMÜ -->
         <section class="card recognition-section">
             <h2>Bir İş Arkadaşını Takdir Et</h2>
             <p>Başarılı bir çalışmayı veya yardımlaşmayı alkışla!</p>
             
-            <!-- Sayfa yenilenmesin diye hedefi gizli iframe'e yönlendiriyoruz -->
-            <form id="customForm" action="https://docs.google.com/forms/d/1QImWKFNEySK4ZVuTLGsGV8GS1oIafHXDEUgXaaZ3_hM/formResponse" method="POST" target="hidden_iframe" onsubmit="showSuccess()">
+            <form id="customForm" action="https://docs.google.com/forms/d/e/1FAIpQLSekQcOAILxO5POLOeaRHsbkPptNvX85sbpLitkJkmWx4SW42w/viewform?usp=dialog" method="POST" target="hidden_iframe" onsubmit="showSuccess()" class="recognition-form">
                 
-                <label for="employee-name">Kimi Takdir Ediyorsun?</label>
-                <!-- name="entry.12345" kısmını kendi formundan bulup değiştireceğiz -->
-                <input type="text" id="employee-name" name="entry.1121950418" placeholder="Arkadaşının adı ve soyadı..." required>
+                <!-- 1. ADIM: DEPARTMAN SEÇİMİ -->
+                <div class="form-group">
+                    <label for="department-select">Departman Seçin</label>
+                    <select id="department-select" onchange="updateEmployeeDropdown()" required>
+                        <option value="">Yükleniyor veya Seçiniz...</option>
+                    </select>
+                </div>
 
-                <label for="message">Neden Takdir Ediyorsun?</label>
-                <!-- name="entry.67890" kısmını kendi formundan bulup değiştireceğiz -->
-                <textarea id="message" name="entry.628692328" rows="4" placeholder="Yaptığı harika işi kısaca anlat..." required></textarea>
+                <!-- 2. ADIM: DİNAMİK ÇALIŞAN SEÇİMİ (Google Form Entry Kimliği Buraya Yazılır) -->
+                <div class="form-group">
+                    <label for="employee-select">Kimi Takdir Ediyorsun?</label>
+                    <select id="employee-select" name="entry.1121950418" required disabled>
+                        <option value="">Önce Departman Seçiniz...</option>
+                    </select>
+                </div>
+
+                <!-- 3. ADIM: NEDEN TAKDİR EDİYORSUN? (Google Form Entry Kimliği Buraya Yazılır) -->
+                <div class="form-group">
+                    <label for="message">Neden Takdir Ediyorsun?</label>
+                    <textarea id="message" name="entry.628692328" rows="4" placeholder="Yaptığı harika işi kısaca anlat..." required></textarea>
+                </div>
 
                 <button type="submit" class="submit-btn">Takdir Gönder ✨</button>
             </form>
 
-            <!-- Başarı Mesajı Kutusu -->
             <div id="successMessage">Takdiriniz başarıyla gönderildi! 🎉</div>
         </section>
 
     </div>
 
-    <!-- Sayfanın Sheet Monkey gibi yerlere gitmesini engelleyen gizli koruyucu -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
+    <!-- SİHİRLİ VERİTABANI VE FİLTRELEME MOTORU (JAVASCRIPT) -->
     <script>
+        // Google Apps Script'ten aldığın Web Uygulaması URL'sini buraya yapıştır
+        const googleAppsScriptUrl = "https://script.google.com/macros/s/AKfycbxxQJJVTk8AiLBr1i8-lU9GdWXzggwUpsKnVii1v6ZS61vZl0MHRsyk9-UG8r5U2kHq/exec";
+        
+        let tümCalisanVerisi = [];
+
+        // Sayfa açıldığında Google Sheets'ten verileri otomatik çeken fonksiyon
+        async function verileriKöktenCek() {
+            try {
+                const response = await fetch(googleAppsScriptUrl);
+                tümCalisanVerisi = await response.json();
+                
+                // E-tablodaki benzersiz departmanları bulup Departman Seçim kutusuna doldurur
+                const departmanlar = [...new Set(tümCalisanVerisi.map(item => item.Departman))];
+                const deptSelect = document.getElementById('department-select');
+                
+                deptSelect.innerHTML = '<option value="">-- Departman Seçin --</option>';
+                departmanlar.forEach(dept => {
+                    if(dept) { // Boş satırları filtrele
+                        deptSelect.innerHTML += `<option value="${dept}">${dept}</option>`;
+                    }
+                });
+            } catch (error) {
+                console.error("Veritabanı bağlantı hatası:", error);
+                document.getElementById('department-select').innerHTML = '<option value="">Hata! Veri alınamadı.</option>';
+            }
+        }
+
+        // Departman seçildiğinde tetiklenen ve sadece o departmanın çalışanlarını listeleyen fonksiyon
+        function updateEmployeeDropdown() {
+            const secilenDepartman = document.getElementById('department-select').value;
+            const employeeSelect = document.getElementById('employee-select');
+            
+            if (!secilenDepartman) {
+                employeeSelect.innerHTML = '<option value="">Önce Departman Seçiniz...</option>';
+                employeeSelect.disabled = true;
+                return;
+            }
+            
+            // Seçilen departmana ait kişileri filtrele
+            const filtrelenmisKisiler = tümCalisanVerisi.filter(item => item.Departman === secilenDepartman);
+            
+            employeeSelect.innerHTML = '<option value="">-- Çalışan Seçin --</option>';
+            filtrelenmisKisiler.forEach(kisi => {
+                if(kisi.Isim) { // E-tablondaki sütun başlığın "Isim" olmalı
+                    employeeSelect.innerHTML += `<option value="${kisi.Isim}">${kisi.Isim}</option>`;
+                }
+            });
+            
+            employeeSelect.disabled = false; // Kutuyu aktif hale getir
+        }
+
+        // Başarılı gönderim mesajı ve form sıfırlama
         function showSuccess() {
-            // Başarı yazısını gösterir ve formu temizler
             document.getElementById('successMessage').style.display = 'block';
             setTimeout(function() {
                 document.getElementById('customForm').reset();
+                document.getElementById('employee-select').disabled = true;
+                document.getElementById('employee-select').innerHTML = '<option value="">Önce Departman Seçiniz...</option>';
             }, 500);
         }
+
+        // Sayfa ilk yüklendiğinde arka planda e-tabloyu oku
+        window.onload = verileriKöktenCek;
     </script>
 
 </body>
