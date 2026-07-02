@@ -105,3 +105,51 @@ input[type="text"], textarea {
 .submit-btn:hover {
     background-color: #27ae60; /* Fare gelince biraz daha koyu yeşil */
 }
+CSS
+/* Takdir Programı Formunu Düzenler */
+.recognition-section .recognition-form {
+    display: flex;
+    flex-direction: column; /* Her elemanı alt alta dizer */
+    max-width: 400px; /* Çok genişlememesi için sınır */
+    margin: 0 auto; /* Formu yatayda ortalar */
+    text-align: left; /* Metinleri sola yaslar */
+    gap: 15px; /* Elemanlar arası genel boşluk */
+}
+
+/* Etiketleri (Başlıkları) Düzenler */
+.recognition-section .recognition-form label {
+    margin-bottom: -5px; /* Kutu ile başlık arasını daraltır */
+    font-weight: 600;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+/* Giriş Kutularını (Input ve Textarea) Düzenler ve Hizalar */
+.recognition-section .recognition-form input,
+.recognition-section .recognition-form textarea {
+    width: 100%; /* Bulunduğu alanın tamamını kaplar (Kritik Hizalama) */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box; /* Padding'in genişliği bozmasını engeller */
+    font-family: inherit; /* Yazı tipini ana siteden alır */
+}
+
+/* Yeşil Gönder Butonunu Düzenler */
+.recognition-section .submit-btn {
+    margin-top: 10px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #10b981; /* Yeşil renk */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%; /* Butonu da hizalar */
+}
+
+.recognition-section .submit-btn:hover {
+    background-color: #059669; /* Hover rengi */
+}
